@@ -1,0 +1,37 @@
+{
+	"dbServer": "localhost",
+	"dbName": "postgres",
+	"dbUser": "postgres",
+	"dbPassword": "Welcome123",
+	"dbPort": 54320,
+	"tablePrefix": null,
+	"templates": [
+		{
+			"values": {
+				"package": "com.lagovistatech.project.webapi.generated"
+			},
+			"fileName": "row-interface.java",
+			"outputFileName": "__table_name_camel_singular__Row.java",
+			"outputDirectory": "target/generated",
+			"oneFilePerTable": true
+		},
+		{
+			"values": {
+				"package": "com.lagovistatech.authentication.service"
+			},
+			"fileName": "row-implementation.java",
+			"outputFileName": "__table_name_camel_singular__RowImp.java",
+			"outputDirectory": "target/generated",
+			"oneFilePerTable": true
+		},
+		{
+			"values": {
+				"package": "com.lagovistatech.authentication.service"
+			},
+			"fileName": "row-factory-interface.java",
+			"outputFileName": "__table_name_camel_singular__RowFactory.java",
+			"outputDirectory": "target/generated",
+			"oneFilePerTable": true
+		}
+	]
+}
