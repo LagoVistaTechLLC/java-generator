@@ -1,0 +1,76 @@
+{
+	"dbServer": "localhost",
+	"dbName": "postgres",
+	"dbUser": "postgres",
+	"dbPassword": "postgres",
+	"dbPort": 54321,
+	"tablePrefix": null,
+	"templates": [
+		{
+			"values": {
+				"package": "com.lagovistatech.security.webapi"
+			},
+			"fileName": "row-interface.java",
+			"outputFileName": "__table_name_camel_singular__Row.java",
+			"outputDirectory": "generated",
+			"oneFilePerTable": true
+		},
+		{
+			"values": {
+				"package": "com.lagovistatech.security.webapi"
+			},
+			"fileName": "row-implementation.java",
+			"outputFileName": "__table_name_camel_singular__RowImp.java",
+			"outputDirectory": "generated",
+			"oneFilePerTable": true
+		},
+		{
+			"values": {
+				"package": "com.lagovistatech.security.webapi"
+			},
+			"fileName": "row-factory-interface.java",
+			"outputFileName": "__table_name_camel_singular__RowFactory.java",
+			"outputDirectory": "generated",
+			"oneFilePerTable": true
+		},
+		{
+			"values": {
+				"package": "com.lagovistatech.security.webapi"
+			},
+			"fileName": "row-factory-implementation.java",
+			"outputFileName": "__table_name_camel_singular__RowFactoryImp.java",
+			"outputDirectory": "generated",
+			"oneFilePerTable": true
+		},
+		
+		{
+			"values": {
+				"package": "com.lagovistatech.security.webapi"
+			},
+			"fileName": "entity.java",
+			"outputFileName": "__table_name_camel_singular__.java",
+			"outputDirectory": "generated",
+			"oneFilePerTable": true
+		},
+		{
+			"values": {
+				"package": "com.lagovistatech.security.webapi"
+			},
+			"fileName": "entity-factory.java",
+			"outputFileName": "__table_name_camel_singular__Factory.java",
+			"outputDirectory": "generated",
+			"oneFilePerTable": true
+		},
+
+		
+		{
+			"values": {
+				"package": "com.lagovistatech.security.webapi"
+			},
+			"fileName": "entity-implimentation.java",
+			"outputFileName": "__table_name_camel_singular__Imp.java",
+			"outputDirectory": "generated",
+			"oneFilePerTable": true
+		}
+	]
+}

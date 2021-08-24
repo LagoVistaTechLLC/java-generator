@@ -78,6 +78,42 @@
 					</archive>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<phase>clean</phase>
+						<id>clean</id>
+						<configuration>
+							<target>
+								<delete dir="distribution" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					<execution>
+						<phase>package</phase>
+						<id>package</id>
+						<configuration>
+							<target>
+								<copy file="run.bat" todir="distribution" />
+								<copy file="run.sh" todir="distribution" />
+								<copy file="config.json" todir="distribution" />
+								<copy todir="distribution/templates">
+									<fileset dir="templates" />
+								</copy>
+								<copy file="target/${artifactId}-${version}.jar" tofile="distribution/${artifactId}.jar" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
