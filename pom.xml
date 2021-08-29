@@ -5,6 +5,13 @@
 	<groupId>com.lagovistatech</groupId>
 	<artifactId>generator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>Lago Vista Technologies LLC Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/LagoVistaTechLLC/java-generator</url>
+		</repository>
+	</distributionManagement>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>11</maven.compiler.source>
@@ -105,7 +112,8 @@
 								<copy todir="distribution/templates">
 									<fileset dir="templates" />
 								</copy>
-								<copy file="target/${artifactId}-${version}.jar" tofile="distribution/${artifactId}.jar" />
+								<copy file="target/${artifactId}-${version}.jar"
+									tofile="distribution/${artifactId}.jar" />
 							</target>
 						</configuration>
 						<goals>
