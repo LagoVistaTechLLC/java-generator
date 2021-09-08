@@ -38,12 +38,12 @@ public interface __table_name_camel_singular__Row extends Row, Versioned {
 	
 	/* CHILDREN */
 	// start children
-	<R extends __child_child_table_camel_singular__Row> Table<R> load__child_child_table_camel_plural__By__child_child_column_camel__EqualsMy__child_parent_column_camel__(Connection conn, __child_child_table_camel_singular__RowFactory<R> factory) throws Exception;	
+	<R extends __child_child_table_camel_singular__Row> Table<R> load__relation_many_camel__(Connection conn, __child_child_table_camel_singular__RowFactory<R> factory) throws Exception;	
 	// end children	
 
 	/* PARENTS */
 	// start parents
-	<R extends __parent_parent_table_camel_singular__Row> R load__parent_parent_table_camel_singular__ByMy__parent_child_column_camel__(Connection conn, __parent_parent_table_camel_singular__RowFactory<R> factory) throws Exception;	
+	<R extends __parent_parent_table_camel_singular__Row> R load__relation_one_camel__(Connection conn, __parent_parent_table_camel_singular__RowFactory<R> factory) throws Exception;	
 	// end parents	
 
 }

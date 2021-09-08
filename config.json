@@ -19,8 +19,25 @@
 			"values": {
 				"package": "com.lagovistatech.security.webapi"
 			},
+			"fileName": "data-transfer-object-copier.java",
+			"outputFileName": "__table_name_camel_singular__DtoCopier.java",
+			"outputDirectory": "generated",
+			"oneFilePerTable": true
+		},		{
+			"values": {
+				"package": "com.lagovistatech.security.webapi"
+			},
 			"fileName": "row-implementation.java",
 			"outputFileName": "__table_name_camel_singular__RowImp.java",
+			"outputDirectory": "generated",
+			"oneFilePerTable": true
+		},
+		{
+			"values": {
+				"package": "com.lagovistatech.security.webapi"
+			},
+			"fileName": "data-transfer-object.java",
+			"outputFileName": "__table_name_camel_singular__Dto.java",
 			"outputDirectory": "generated",
 			"oneFilePerTable": true
 		},

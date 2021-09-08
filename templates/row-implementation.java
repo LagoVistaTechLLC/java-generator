@@ -23,6 +23,7 @@ import java.util.HashMap;
 import com.lagovistatech.Factory;
 import com.lagovistatech.database.Connection;
 import com.lagovistatech.database.Parameters;
+import com.lagovistatech.database.RecordNotFoundException;
 import com.lagovistatech.database.Table;
 import com.lagovistatech.database.VersionedRow;
 
@@ -44,7 +45,7 @@ public class __table_name_camel_singular__RowImp extends VersionedRow implements
 		
 	/* CHILDREN */
 	// start children
-	public <R extends __child_child_table_camel_singular__Row> Table<R> load__child_child_table_camel_plural__By__child_child_column_camel__EqualsMy__child_parent_column_camel__(Connection conn, __child_child_table_camel_singular__RowFactory<R> factory) throws Exception {
+	public <R extends __child_child_table_camel_singular__Row> Table<R> load__relation_many_camel__(Connection conn, __child_child_table_camel_singular__RowFactory<R> factory) throws Exception {
 		String sql = 
 			"SELECT * " + 
 			"FROM " + conn.getAdapter().quoteIdentifier("__child_child_table__") + " " + 
@@ -59,7 +60,7 @@ public class __table_name_camel_singular__RowImp extends VersionedRow implements
 		
 	/* PARENTS */
 	// start parents
-	public <R extends __parent_parent_table_camel_singular__Row> R load__parent_parent_table_camel_singular__ByMy__parent_child_column_camel__(Connection conn, __parent_parent_table_camel_singular__RowFactory<R> factory) throws Exception {
+	public <R extends __parent_parent_table_camel_singular__Row> R load__relation_one_camel__(Connection conn, __parent_parent_table_camel_singular__RowFactory<R> factory) throws Exception {
 		String sql = 
 			"SELECT * " + 
 			"FROM " + conn.getAdapter().quoteIdentifier("__parent_parent_table__") + " " + 
@@ -70,7 +71,7 @@ public class __table_name_camel_singular__RowImp extends VersionedRow implements
 		
 		Table<R> table = conn.fill(factory, sql, params);
 		if(table.size() != 1)
-			throw new Exception("Could not load unique row for '__parent_parent_table__'.'__parent_parent_column__' having a value of " + this.get__parent_child_column_camel__().toString() + "!");
+			throw new RecordNotFoundException("Could not load unique row for '__parent_parent_table__'.'__parent_parent_column__' having a value of " + this.get__parent_child_column_camel__().toString() + "!");
 		
 		return table.get(0);
 	}

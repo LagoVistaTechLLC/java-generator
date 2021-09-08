@@ -24,6 +24,7 @@ import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import com.lagovistatech.Guid;
 import com.lagovistatech.Naming;
@@ -100,11 +101,17 @@ public class Generator {
 			System.out.println("\t	Parent Column: " + parent.get("parent_column").toString());
 			
 			for(String column : parents.getSchema().keySet())
-				if(parent.get(column).toString().contains("<"))
+				if(parent.get(column).toString().contains("<")) {
 					callSet("parent_" + column, parent.get(column).toString().replace("<", "One To Many"));
-				else if(parent.get(column).toString().contains(">"))
+					String[] parts = parent.get(column).toString().split(Pattern.quote("<"));
+					callSet("relation_one", parts[0].trim());
+					callSet("relation_many", parts[1].trim());
+				} else if(parent.get(column).toString().contains(">")) {
 					callSet("parent_" + column, parent.get(column).toString().replace(">", "Many To One"));
-				else
+					String[] parts = parent.get(column).toString().split(Pattern.quote(">"));
+					callSet("relation_many", parts[0].trim());
+					callSet("relation_one", parts[1].trim());
+				} else
 					callSet("parent_" + column, parent.get(column).toString());
 						
 			callTouch("parents");
@@ -124,11 +131,17 @@ public class Generator {
 			System.out.println("\t	Child Column: " + child.get("child_column").toString());			
 	
 			for(String column : children.getSchema().keySet())
-				if(child.get(column).toString().contains("<"))
+				if(child.get(column).toString().contains("<")) {
 					callSet("child_" + column, child.get(column).toString().replace("<", "One To Many"));
-				else if(child.get(column).toString().contains(">"))
+					String[] parts = child.get(column).toString().split(Pattern.quote("<"));
+					callSet("relation_one", parts[0].trim());
+					callSet("relation_many", parts[1].trim());
+				} else if(child.get(column).toString().contains(">")) {
 					callSet("child_" + column, child.get(column).toString().replace(">", "Many To One"));
-				else
+					String[] parts = child.get(column).toString().split(Pattern.quote(">"));
+					callSet("relation_many", parts[0].trim());
+					callSet("relation_one", parts[1].trim());
+				} else
 					callSet("child_" + column, child.get(column).toString());
 			
 			callTouch("children");
@@ -198,12 +211,14 @@ public class Generator {
 	}
 	
 	private void callSet(String name, String value) throws NoSuchAlgorithmException {
+		boolean bShow = this.showSets;
+		
 		for(Document doc : templates.values()) {
 			String singular = Naming.toSingular(value);
 			String plural = Naming.toPlural(value);
 			
 			if(this.showSets)
-				System.out.println("\t\tSetting");
+				System.out.println("\t\tSetting: Name = '" + name + "'; Value = '" + value +"'");
 			
 			printAndSet(doc, name + "_md5", Guid.computeMd5String(value));
 		
@@ -222,7 +237,11 @@ public class Generator {
 			printAndSet(doc, name + "_constant_plural", Naming.toConstant(plural));
 			printAndSet(doc, name + "_lower_camel_plural", Naming.toLowerCamel(plural));
 			printAndSet(doc, name + "_lower_plural", Naming.toLowerCase(plural));
+			
+			this.showSets = false;
 		}
+		
+		this.showSets = bShow;
 	}
 	private void printAndSet(Document doc, String name, String value) {
 		if(this.showSets)

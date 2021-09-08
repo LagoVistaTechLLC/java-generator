@@ -22,6 +22,7 @@ import java.util.HashMap;
 
 import com.lagovistatech.database.Connection;
 import com.lagovistatech.database.Parameters;
+import com.lagovistatech.database.RecordNotFoundException;
 import com.lagovistatech.database.Table;
 
 public class __table_name_camel_singular__RowFactoryImp<R extends __table_name_camel_singular__Row> implements __table_name_camel_singular__RowFactory<R> {
@@ -43,7 +44,7 @@ public class __table_name_camel_singular__RowFactoryImp<R extends __table_name_c
 		
 		Table<R> table = conn.fill(this, sql, params);
 		if(table.size() != 1)
-			throw new Exception("Could not load unique row for '__unique_column_name__' having a value of " + value.toString() + "!");
+			throw new RecordNotFoundException("Could not load unique row for '__unique_column_name__' having a value of " + value.toString() + "!");
 		
 		return table.get(0);
 	}
